@@ -4,11 +4,6 @@ dht11 DHT;
  
 void setup(){
     Serial.begin(9600);
-//    Serial.println("DHT TEST PROGRAM ");
-//    Serial.print("LIBRARY VERSION: ");
-//    Serial.println(DHT11LIB_VERSION);
-//    Serial.println();
-//    Serial.println("Type,\tHumidity (%),\tTemperature (C)");
 }
  
 void loop(){

@@ -3,11 +3,13 @@ Highcharts.setOptions({
 				useUTC: false
 		}
 });
+
+
 function activeLastPointToolip(chart) {
 		var points = chart.series[0].points;
 		chart.tooltip.refresh(points[points.length -1]);
 }
-var chart = Highcharts.chart('container', {
+var chart = Highcharts.chart('container_temp', {
 		chart: {
 				type: 'spline',
 				marginRight: 10,
@@ -18,7 +20,7 @@ var chart = Highcharts.chart('container', {
 								activeLastPointToolip(chart);
 								setInterval(function () {
 										var x = (new Date()).getTime(), // 当前时间
-												y = Math.random()*2 + 30;          // 随机值
+											y = Math.random()*2 + 30;          // 随机值
 										series.addPoint([x, y], true, true);
 										activeLastPointToolip(chart);
 								}, 1000);
