@@ -11,7 +11,7 @@ function activeLastPointToolip(chart) {
 }
 var chart = Highcharts.chart('container_humidity', {
     chart: {
-            type: 'spline',
+            type: 'line',
             marginRight: 10,
             events: {
                     load: function () {
