@@ -28,7 +28,7 @@ var chart = Highcharts.chart('container_temp', {
 				}
 		},
 		title: {
-				text: '温度数据图'
+				text: 'temperature plot'
 		},
 		xAxis: {
 				type: 'datetime',

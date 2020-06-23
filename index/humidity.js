@@ -28,7 +28,7 @@ var chart = Highcharts.chart('container_humidity', {
             }
     },
     title: {
-            text: '湿度数据图'
+            text: 'humidity plot'
     },
     xAxis: {
             type: 'datetime',
