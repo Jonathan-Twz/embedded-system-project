@@ -1,5 +1,5 @@
 from DHT11 import fun
-# import json
+import json
 from flask import Flask, render_template , request, send_file
 # import RPi.GPIO as GPIOf
 
