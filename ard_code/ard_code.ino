@@ -23,7 +23,7 @@ void loop(){
 //    Serial.println("Unknown error,\t"); 
 //    break;
 //  }
-Serial.print("humidity(%):");
+  Serial.print("humidity(%):");
   Serial.println(DHT.humidity,1);
   Serial.print("tempe(C):");
   Serial.println(DHT.temperature,1); 
