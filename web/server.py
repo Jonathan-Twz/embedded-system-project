@@ -1,4 +1,6 @@
 #import pymysql
+import urllib, urllib2
+import json
 import sqlite3 as sql
 import datetime
 import time
@@ -16,13 +18,23 @@ if __name__ == "__main__":
             ser.write(b"GET TH")
             response = str(ser.readline().decode())
             if response.startswith('data'):
-                data = response[4:-2]
-                temperature = int(data[:2])
-                humidity = int(data[2:4])
+                serialData = response[4:-2]
+                temperature = int(serialData[:2])
+                humidity = int(serialData[2:4])
                 timenow=str(now())[:-4]
                 #print(humidity)
-                c.execute("insert into sensordata (time, temperature, humidity) values('%s','%f','%f')"%(timenow,temperature, humidity))
+                data = {
+                    'time': timenow,
+                    'temperature': temperature,
+                    'humidity': humidity,
+                }
+                c.execute("insert into sensordata (time, temperature, humidity) values('%s','%f','%f')"%(timenow, temperature, humidity))
                 conn.commit()
+
+                req = urllib2.Request("http://localhost:5000", json.dumps(data), {'Content-Type': 'application/json'})
+                f = urllib2.urlopen(req)
+                res = f.read()
+                f.close()
                 #time.sleep(0.1) #sleep 1 sec after commit
         except KeyboardInterrupt:
             ser.close()

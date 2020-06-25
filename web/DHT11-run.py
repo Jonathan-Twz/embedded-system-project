@@ -3,7 +3,7 @@ import json
 from flask import Flask, render_template , request, send_file
 # import RPi.GPIO as GPIOf
 
-conn = sqlite3.connect('./sql/sensor.db')
+conn = sqlite3.connect('./sensor.db')
 c = conn.cursor()
 
 app = Flask(__name__)
