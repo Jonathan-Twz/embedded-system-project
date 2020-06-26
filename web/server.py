@@ -31,10 +31,10 @@ if __name__ == "__main__":
                 c.execute("insert into sensordata (time, temperature, humidity) values('%s','%f','%f')"%(timenow, temperature, humidity))
                 conn.commit()
 
-                req = urllib2.Request("http://localhost:5000", json.dumps(data), {'Content-Type': 'application/json'})
-                f = urllib2.urlopen(req)
-                res = f.read()
-                f.close()
+                # req = urllib2.Request("http://localhost:5000", json.dumps(data), {'Content-Type': 'application/json'})
+                # f = urllib2.urlopen(req)
+                # res = f.read()
+                # f.close()
                 #time.sleep(0.1) #sleep 1 sec after commit
         except KeyboardInterrupt:
             ser.close()

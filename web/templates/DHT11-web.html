@@ -10,6 +10,27 @@
         <script src="http://cdn.highcharts.com.cn/highcharts/highcharts.js"></script>
         <!-- <script src="https://code.highcharts.com.cn/highcharts/themes/grid-light.js"></script> -->
         <!-- <script src="https://code.highcharts.com.cn/highcharts/themes/dark-unica.js"></script> -->
+
+        <!-- var data={{data}};
+        var temperature=data["temperature"];
+        var humidity=data["humidity"]; -->
+        <!-- <meta http-equiv="refresh" content="1"> /* refresh all*/ -->
+
+        <script>
+            
+            function update_data(){
+                $.ajax({
+                    url: '/getdata',
+                    success:function(data){document.getElementById('test').innerHTML = data[0];}
+                });
+            }
+
+            function showDate(){document.getElementById("datetime").innerHTML=Date();
+                                // function(){update_data();};
+                                setTimeout(function(){showDate()}, 1000);}
+            // function showData(){setInterval(function(){
+                // update_data();}, 1000);}
+        </script>
     </head>
 
     <body>
@@ -19,9 +40,12 @@
 
         <div id="leftbar" style="background-color:#ddd;height:80vh;width:40vw;float: left;">
             <h1>DTH11测量温度和湿度</h1>
-            <p> 温度:{{i}}</p>
-            <p> 湿度:{{j}}</p>
-            <p>{{data}}</p>
+            <p> 温度: {{i}}℃</p>
+            <p> 湿度: {{j}}%</p>
+            日期：<b id="datetime">{{temperature}}</b><br>
+            <p id='test'>hha</p>
+            <script>showDate()</script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         </div>
 
         <div id="container_temp" style="width:50vw;height:40vh"></div>
