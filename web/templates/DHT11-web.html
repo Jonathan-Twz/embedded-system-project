@@ -11,25 +11,8 @@
         <!-- <script src="https://code.highcharts.com.cn/highcharts/themes/grid-light.js"></script> -->
         <!-- <script src="https://code.highcharts.com.cn/highcharts/themes/dark-unica.js"></script> -->
 
-        <!-- var data={{data}};
-        var temperature=data["temperature"];
-        var humidity=data["humidity"]; -->
-        <!-- <meta http-equiv="refresh" content="1"> /* refresh all*/ -->
-
         <script>
-            
-            // function update_data(){
-            //     $.ajax({
-            //         type: "get",
-            //         url: "/gettest",
-            //         dataType: "json",
-            //         success: function(data){document.getElementById('test').innerHTML=data[0];}
-            //         // success: document.getElementById("test").innerHTML=Date()
-            //     });
-            // }
-
             function showDate(){document.getElementById("datetime").innerHTML=Date(),
-                                // function(){update_data();},
                                 setTimeout(function(){showDate()}, 1000);}
         </script>
     </head>
@@ -40,11 +23,12 @@
             <h1 style="margin-bottom:0;">RaspberryPi Dashboard</h1></div>
 
         <div id="leftbar" style="background-color:#ddd;height:80vh;width:40vw;float: left;">
-            <h1>DTH11测量温度和湿度</h1>
+            <!-- <h1>DTH11测量温度和湿度</h1>
             <p> 温度: {{i}}℃</p>
-            <p> 湿度: {{j}}%</p>
+            <p> 湿度: {{j}}%</p> -->
+            温度：<b id='temperature'>None</b>℃ <br>
+            湿度：<b id='humidity'>None</b>% <br>
             日期：<b id="datetime">date and time show here</b><br>
-            <p id='test'>hha</p>
             <script>showDate()</script>
             <script src="{{url_for('static', filename='updatetxt.js')}}"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

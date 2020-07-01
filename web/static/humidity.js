@@ -32,10 +32,9 @@ var chart = Highcharts.chart('container_humidity', {
                                             dataType: "json",
                                             success: function(data){
                                                 var x = (new Date()).getTime(), // 当前时间
-                                                    y = data[0]
+                                                    y = data[2] //humidity
                                                     series.addPoint([x,y], true, true);
                                                     activeLastPointToolip(chart);
-                                                // document.getElementById("test").innerHTML=Date();
                                             }
                                     })
                             },1000);

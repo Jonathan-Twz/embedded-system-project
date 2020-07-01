@@ -1,8 +1,10 @@
 setInterval(function(){
     $.ajax({
         type: "get",
-        url: "/gettest",
+        url: "/getData",
         dataType: "json",
-        success: function(data){document.getElementById('test').innerHTML=data[0];}
+        success: function(data){document.getElementById('temperature').innerHTML=data[1];
+                                document.getElementById('humidity').innerHTML=data[2];
+                                }
     })
 },1000);

@@ -18,12 +18,25 @@ var chart = Highcharts.chart('container_temp', {
 								var series = this.series[0],
 										chart = this;
 								activeLastPointToolip(chart);
-								setInterval(function () {
-										var x = (new Date()).getTime(), // 当前时间
-											y = Math.random()*2 + 30;          // 随机值
-										series.addPoint([x, y], true, true);
-										activeLastPointToolip(chart);
-								}, 1000);
+								// setInterval(function () {
+								// 		var x = (new Date()).getTime(), // 当前时间
+								// 			y = Math.random()*2 + 30;          // 随机值
+								// 		series.addPoint([x, y], true, true);
+								// 		activeLastPointToolip(chart);
+								// }, 1000);
+								setInterval(function(){
+                                    $.ajax({
+                                            type: "get",
+                                            url: "/getData",
+                                            dataType: "json",
+                                            success: function(data){
+                                                var x = (new Date()).getTime(), // 当前时间
+                                                    y = data[1] //temperature
+                                                    series.addPoint([x,y], true, true);
+                                                    activeLastPointToolip(chart);
+                                            }
+                                    })
+                            	},1000);
 						}
 				}
 		},

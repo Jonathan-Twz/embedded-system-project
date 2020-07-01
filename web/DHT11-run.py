@@ -4,9 +4,6 @@ from flask import Flask, render_template , request, Response
 import numpy as np
 # import RPi.GPIO as GPIOf
 
-conn = sqlite3.connect('./sensor.db')
-c = conn.cursor()
-
 app = Flask(__name__)
 
 @app.route('/',methods=['GET','POST'])
@@ -22,13 +19,18 @@ def index():
 
 @app.route('/getData',methods=['GET','POST'])
 def getData():
-    data = [round(np.random.rand()*100), round(np.random.rand()*100)]
+    conn = sqlite3.connect('./sensor.db')
+    c = conn.cursor()
+    # data = [round(np.random.rand()*100), round(np.random.rand()*100)]
+    c.execute("select * from sensordata")
+    data = c.fetchall()[-1]
+    print(data)
     return Response(json.dumps(data), mimetype='application/json')
 
-@app.route('/gettest',methods=['GET','POST'])
-def getData1():
-    data = [round(np.random.rand()*100), round(np.random.rand()*100)]
-    return Response(json.dumps(data), mimetype='application/json')
+# @app.route('/gettest',methods=['GET','POST'])
+# def getData1():
+#     data = [round(np.random.rand()*100), round(np.random.rand()*100)]
+#     return Response(json.dumps(data), mimetype='application/json')
 
 
 if __name__=='__main__':
