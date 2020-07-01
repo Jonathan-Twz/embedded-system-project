@@ -18,18 +18,19 @@
 
         <script>
             
-            function update_data(){
-                $.ajax({
-                    url: '/getdata',
-                    success:function(data){document.getElementById('test').innerHTML = data[0];}
-                });
-            }
+            // function update_data(){
+            //     $.ajax({
+            //         type: "get",
+            //         url: "/gettest",
+            //         dataType: "json",
+            //         success: function(data){document.getElementById('test').innerHTML=data[0];}
+            //         // success: document.getElementById("test").innerHTML=Date()
+            //     });
+            // }
 
-            function showDate(){document.getElementById("datetime").innerHTML=Date();
-                                // function(){update_data();};
-                                setTimeout(function(){showDate()}, 1000);}
-            // function showData(){setInterval(function(){
-                // update_data();}, 1000);}
+            function showDate(){document.getElementById("datetime").innerHTML=Date(),
+                                // function(){update_data();},
+                                setInterval(function(){showDate()}, 1000);}
         </script>
     </head>
 
@@ -42,9 +43,10 @@
             <h1>DTH11测量温度和湿度</h1>
             <p> 温度: {{i}}℃</p>
             <p> 湿度: {{j}}%</p>
-            日期：<b id="datetime">{{temperature}}</b><br>
+            日期：<b id="datetime">date and time show here</b><br>
             <p id='test'>hha</p>
             <script>showDate()</script>
+            <script src="{{url_for('static', filename='updatetxt.js')}}"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         </div>
 

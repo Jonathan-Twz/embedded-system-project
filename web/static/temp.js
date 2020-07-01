@@ -60,7 +60,7 @@ var chart = Highcharts.chart('container_temp', {
 								data.push({
 										x: time + i * 1000,
                                         // y: Math.random()
-                                        y: 30 // original data
+                                        y: 0 // original data
 								});
 						}
 						return data;

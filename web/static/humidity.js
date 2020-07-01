@@ -18,12 +18,27 @@ var chart = Highcharts.chart('container_humidity', {
                             var series = this.series[0],
                                     chart = this;
                             activeLastPointToolip(chart);
-                            setInterval(function () {
-                                    var x = (new Date()).getTime(), // 当前时间
-                                        y = Math.random()*2 + 90;          // 随机值
-                                    series.addPoint([x, y], true, true);
-                                    activeLastPointToolip(chart);
-                            }, 1000);
+                        //     setInterval(function () {
+                        //             var x = (new Date()).getTime(), // 当前时间
+                        //                 y = Math.random()*2 + 150;          // 随机值
+                        //             series.addPoint([x, y], true, true);
+                        //             activeLastPointToolip(chart);
+                        //     }, 1000);
+
+                            setInterval(function(){
+                                    $.ajax({
+                                            type: "get",
+                                            url: "/getData",
+                                            dataType: "json",
+                                            success: function(data){
+                                                var x = (new Date()).getTime(), // 当前时间
+                                                    y = data[0]
+                                                    series.addPoint([x,y], true, true);
+                                                    activeLastPointToolip(chart);
+                                                // document.getElementById("test").innerHTML=Date();
+                                            }
+                                    })
+                            },1000);
                     }
             }
     },
@@ -60,7 +75,7 @@ var chart = Highcharts.chart('container_humidity', {
                             data.push({
                                     x: time + i * 1000,
                                     // y: Math.random()
-                                    y: 30 // original data
+                                    y: 0 // original data
                             });
                     }
                     return data;
