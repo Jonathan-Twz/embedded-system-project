@@ -15,7 +15,7 @@ def index():
         'temperature':'555'
     }
 
-    return render_template('DHT11-web.html',**templateData)
+    return render_template('dashboard.html',**templateData)
 
 @app.route('/getData',methods=['GET','POST'])
 def getData():
