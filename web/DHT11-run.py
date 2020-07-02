@@ -27,11 +27,5 @@ def getData():
     print(data)
     return Response(json.dumps(data), mimetype='application/json')
 
-# @app.route('/gettest',methods=['GET','POST'])
-# def getData1():
-#     data = [round(np.random.rand()*100), round(np.random.rand()*100)]
-#     return Response(json.dumps(data), mimetype='application/json')
-
-
 if __name__=='__main__':
     app.run(host='localhost', port=5000, debug=True)
