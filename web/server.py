@@ -18,17 +18,18 @@ if __name__ == "__main__":
             ser.write(b"GET TH")
             response = str(ser.readline().decode())
             if response.startswith('data'):
-                serialData = response[4:-2]
-                temperature = int(serialData[:2])
-                humidity = int(serialData[2:4])
+                data = response[5:]
+                temperature = int(data[:2])
+                humidity = int(data[3:5])
+                light = int(data[6:9])
+                gas = int(data[10:13])
+                rain = int(data[14:18])
+                voice = int(data[19])
+                track = int(data[21])
+                alert_flag = int(data[23])
                 timenow=str(now())[:-4]
-                #print(humidity)
-                data = {
-                    'time': timenow,
-                    'temperature': temperature,
-                    'humidity': humidity,
-                }
-                c.execute("insert into sensordata (time, temperature, humidity) values('%s','%f','%f')"%(timenow, temperature, humidity))
+                
+                c.execute("insert into sensordata (time, temperature, humidity, light, gas, rain, voice, track, alter_flag) values('%s','%f','%f','%f','%f','%f','%f','%f','%f')"%(timenow, temperature, humidity, light, gas, rain, voice, track, alert_flag))
                 conn.commit()
         except KeyboardInterrupt:
             ser.close()
