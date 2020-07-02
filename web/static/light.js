@@ -9,7 +9,7 @@ function activeLastPointToolip(chart) {
     var points = chart.series[0].points;
     chart.tooltip.refresh(points[points.length -1]);
 }
-var chart = Highcharts.chart('container_humidity', {
+var chart = Highcharts.chart('container_light', {
     chart: {
             type: 'line',
             marginRight: 10,
@@ -19,23 +19,23 @@ var chart = Highcharts.chart('container_humidity', {
                                     chart = this;
                             activeLastPointToolip(chart);
                             setInterval(function(){
-                                    $.ajax({
-                                            type: "get",
-                                            url: "/getData",
-                                            dataType: "json",
-                                            success: function(data){
-                                                var x = (new Date()).getTime(), // 当前时间
-                                                    y = data[2] //humidity
-                                                    series.addPoint([x,y], true, true);
-                                                    activeLastPointToolip(chart);
-                                            }
-                                    })
+                                $.ajax({
+                                        type: "get",
+                                        url: "/getData",
+                                        dataType: "json",
+                                        success: function(data){
+                                            var x = (new Date()).getTime(), // 当前时间
+                                                y = data[3]
+                                                series.addPoint([x,y], true, true);
+                                                activeLastPointToolip(chart);
+                                        }
+                                })
                             },1000);
                     }
             }
     },
     title: {
-            text: '湿度图'
+            text: '光线图'
     },
     xAxis: {
             type: 'datetime',
@@ -57,7 +57,7 @@ var chart = Highcharts.chart('container_humidity', {
             enabled: false
     },
     series: [{
-            name: '湿度数据',
+            name: '光线数据',
             data: (function () {
                     // 生成随机值
                     var data = [],

@@ -24,6 +24,7 @@ def getData():
     # data = [round(np.random.rand()*100), round(np.random.rand()*100)]
     c.execute("select * from sensordata")
     data = c.fetchall()[-1]
+    data = [data[0], data[1], data[2], int(data[3]), int(data[4]), int(data[5]), int(data[6]), int(data[7]), int(data[8])]
     print(data,'\n')
     return Response(json.dumps(data), mimetype='application/json')
 

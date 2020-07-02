@@ -14,12 +14,3 @@ setInterval(function(){
                                 }
     })
 },1000);
-
-// 日期：<b id="datetime">date and time show here</b><br>
-//             温度：<b id='temperature'>None</b>℃ <br>
-//             湿度：<b id='humidity'>None</b>% <br>
-//             光线：<b id='light'>None</b> <br>
-//             雨滴：<b id='rain'>None</b> <br>
-//             声音：<b id='voice'>None</b> <br>
-//             红外：<b id='track'>None</b> <br>
-//             报警：<b id='alert_flag'>None</b> <br></br>
