@@ -23,12 +23,15 @@
             <h1 style="margin-bottom:0;">RaspberryPi Dashboard</h1></div>
 
         <div id="leftbar" style="background-color:#ddd;height:80vh;width:40vw;float: left;">
-            <!-- <h1>DTH11测量温度和湿度</h1>
-            <p> 温度: {{i}}℃</p>
-            <p> 湿度: {{j}}%</p> -->
+            日期：<b id="datetime">None</b><br>
             温度：<b id='temperature'>None</b>℃ <br>
             湿度：<b id='humidity'>None</b>% <br>
-            日期：<b id="datetime">date and time show here</b><br>
+            光线：<b id='light'>None</b> <br>
+            气体：<b id='gas'>None</b> <br>
+            雨滴：<b id='rain'>None</b> <br>
+            声音：<b id='voice'>None</b> <br>
+            红外：<b id='track'>None</b> <br>
+            报警：<b id='alert_flag'>None</b> <br>
             <script>showDate()</script>
             <script src="{{url_for('static', filename='updatetxt.js')}}"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

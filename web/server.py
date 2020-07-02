@@ -29,7 +29,7 @@ if __name__ == "__main__":
                 alert_flag = int(data[23])
                 timenow=str(now())[:-4]
                 
-                c.execute("insert into sensordata (time, temperature, humidity, light, gas, rain, voice, track, alter_flag) values('%s','%f','%f','%f','%f','%f','%f','%f','%f')"%(timenow, temperature, humidity, light, gas, rain, voice, track, alert_flag))
+                c.execute("insert into sensordata (time, temperature, humidity, light, gas, rain, voice, track, alter_flag) values('%s','%d','%d','%d','%d','%d','%d','%d','%d')"%(timenow, temperature, humidity, light, gas, rain, voice, track, alert_flag))
                 conn.commit()
         except KeyboardInterrupt:
             ser.close()
