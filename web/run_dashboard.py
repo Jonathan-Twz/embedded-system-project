@@ -2,7 +2,6 @@ import sqlite3
 import json
 from flask import Flask, render_template , request, Response
 import numpy as np
-# import RPi.GPIO as GPIOf
 
 app = Flask(__name__)
 
